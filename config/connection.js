@@ -3,8 +3,25 @@ require('dotenv').config();
 
 let sequelize;
 
-if (process.env.JAWSDB_URL) {
-  sequelize = new Sequelize(process.env.JAWSDB_URL);
+const connectionUrl = process.env.DATABASE_URL || process.env.JAWSDB_URL;
+const isPostgres = connectionUrl
+  ? connectionUrl.startsWith('postgres://') || connectionUrl.startsWith('postgresql://')
+  : false;
+
+if (connectionUrl) {
+  sequelize = new Sequelize(connectionUrl, {
+    dialect: isPostgres ? 'postgres' : undefined,
+    logging: false,
+    dialectOptions:
+      isPostgres && process.env.NODE_ENV === 'production'
+        ? {
+            ssl: {
+              require: true,
+              rejectUnauthorized: false,
+            },
+          }
+        : {},
+  });
 } else {
   sequelize = new Sequelize(
     process.env.DB_NAME,

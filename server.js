@@ -10,6 +10,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const isProduction = process.env.NODE_ENV === 'production';
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({
@@ -19,12 +20,12 @@ const hbs = exphbs.create({
 });
 
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SESSION_SECRET || 'Super secret secret',
   cookie: {
     maxAge: 300000,
     httpOnly: true,
-    secure: false,
-    sameSite: 'strict',
+    secure: isProduction,
+    sameSite: isProduction ? 'lax' : 'strict',
   },
   resave: false,
   saveUninitialized: true,
@@ -32,6 +33,10 @@ const sess = {
     db: sequelize
   })
 };
+
+if (isProduction) {
+  app.set('trust proxy', 1);
+}
 
 app.use(session(sess));
 
