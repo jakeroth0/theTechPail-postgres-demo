@@ -60,6 +60,10 @@ Set env vars in Render:
 - `SESSION_SECRET`
 - `NODE_ENV=production`
 
+Quickest path: deploy from `render.yaml` using Render Blueprint.
+
+See `/docs/render-deploy-checklist.md` for the exact click path and verification steps.
+
 See `/docs/fork-to-render-playbook.md` for the full fork-equivalent and deployment workflow.
 
 ## License
