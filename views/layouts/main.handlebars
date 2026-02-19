@@ -1,0 +1,121 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechPail</title>
+    {{! <link rel="stylesheet" href="/public/css/style.css"> }}
+    <link rel="stylesheet" href="/build/tailwind.css" />
+    <script src="/js/main.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <!-- Only display the logout button if the user is logged in -->
+      {{#if logged_in}}
+        <section id="mobile-nav" class="bg-white w-full text-5xl flex flex-col justify-content-center xl:hidden">
+          <div class="flex justify-between items-center h-20 border-b-2 border-b-black">
+            <a href="/" class="text-left text-xl font-semibold pl-9">Tech Pail</a>
+            <button
+              id="hamburger-btn"
+              class="text-3xl cursor-pointer px-6 py-2"
+            >&#9776;</button>
+            <nav class="hidden space-x-8 text-xl" aria-label="main">
+              <h1 class="text-black">
+                <a href="/">TechPail</a>
+              </h1>
+            </nav>
+          </div>
+        </section>
+        <section
+          id="mobile-menu"
+          class="absolute z-10 top-0 bg-white w-full text-5xl hidden flex-col justify-content-center"
+        >
+          <div
+            class="flex justify-between items-center h-20 border-b-2 border-b-black"
+          >
+            <a href="/" class="text-left text-xl font-semibold pl-9">Tech Pail</a>
+            <button class="text-4xl font-light px-6 py-2">
+              &times;
+            </button>
+          </div>
+          <nav class="flex flex-col min-h-screen items-center">
+            <a
+              href="/#recent-post"
+              class="w-full text-left text-xl font-semibold pl-9 py-14 greengradient hover:opacity-90 border-b-2 border-b-black md:text-5xl md:pl-32"
+            >Recent Posts</a>
+            <a
+              href="/api/users/profile/{{user_id}}"
+              class="w-full text-left text-xl font-semibold pl-9 py-14 yellowgradient hover:opacity-90 border-b-2 border-b-black md:text-5xl md:pl-32"
+            >Profile</a>
+            <a
+              href="/api/users/logout"
+              id="logoutMobile"
+              class="w-full text-left text-xl font-semibold pl-9 py-14 orangegradient hover:opacity-90 border-b-2 border-b-black md:text-5xl md:pl-32"
+            >Logout</a>
+            <a
+              href="/new"
+              class="w-full text-left text-xl font-semibold pl-9 py-14 purplegradient hover:opacity-90 border-b-2 border-b-black md:text-5xl md:pl-32"
+            >New Post</a>
+            <div
+              class="w-full py-16 greengradient border-b-2 border-b-black"
+            ></div>
+            <div
+              class="w-full py-16 yellowgradient border-b-2 border-b-black"
+            ></div>
+            <div
+              class="w-full py-16 orangegradient border-b-2 border-b-black"
+            ></div>
+            <div
+              class="w-full py-16 purplegradient border-b-2 border-b-black"
+            ></div>
+             <div
+              class="w-full py-16 greengradient border-b-2 border-b-black"
+            ></div>
+            <div
+              class="w-full py-16 yellowgradient border-b-2 border-b-black"
+            ></div>
+          </nav>
+        </section>
+        {{!-- desktop Menu --}}
+        <section class="hidden xl:fixed xl:flex xl:flex-col xl:bg-white z-20 top-0 h-screen w-[148px]">
+          <a href="/" class="flex justify-center items-center h-[16%] border-r-2 border-b-2 border-black">
+            <img class=" absolute bg-white z-40 hover:hidden" src="/assets/logo.svg" alt="">
+            <img class=" absolute  z-30" src="/assets/tpGif.gif" alt="">
+          </a>
+          <a href="/#recent-post" class="flex justify-center items-center h-[23%] border-r-2 border-b-2 border-black text-xl font-light hover:bg-gren">Recent Posts</a>
+          <a href="/api/users/profile/{{user_id}}" class="flex justify-center items-center h-[23%] border-r-2 border-b-2 border-black text-xl font-light hover:bg-yelr">Profile</a>
+          <a href="/new" class="flex justify-center items-center h-[23%] border-r-2 border-b-2 border-black text-xl font-light hover:bg-purp">New Post</a>
+          <a href="/api/users/logout" id="logoutDesktop" class="flex justify-center items-center h-[15%] border-r-2 border-black text-xl font-light hover:bg-orng">Logout</a>
+        </section>
+      {{else}}
+        <section id="mobile-nav-login" class="bg-white w-full text-5xl flex flex-col justify-content-center xl:hidden">
+          <div class="flex justify-between items-center h-20 border-b-2 border-b-black">
+            <a href="/" class="text-left text-xl font-semibold pl-9">Tech Pail</a>
+            <a id="mobileLogout" href="/login" class="text-right block text-xl font-normal pr-9">Log in</a>
+          </div>
+
+        </section>
+        <section class="hidden xl:fixed xl:flex xl:flex-col xl:bg-white z-20 top-0 h-screen w-[148px]">
+          <a href="/" class="flex justify-center items-center h-[16%] border-r-2 border-b-2 border-black">
+            <img class=" absolute bg-white z-40 hover:hidden" src="/assets/logo.svg" alt="">
+            <img class=" absolute  z-30" src="/assets/tpGif.gif" alt="">
+          </a>
+          <a href="/login" class="flex justify-center items-center h-[23%] border-r-2 border-b-2 border-black text-xl font-light hover:bg-orng">Log in</a>
+          <p class="flex justify-center items-center h-[23%] border-r-2 border-b-2 border-black text-xl font-light hover:bg-yelr">Bonjour</p>
+          <p class="flex justify-center items-center h-[23%] border-r-2 border-b-2 border-black text-xl font-light hover:bg-purp">Konnichiwa</p>
+          <p class="flex justify-center items-center h-[15%] border-r-2 border-black text-xl font-light hover:bg-gren">Sup</p>
+        </section>
+      {{/if}}
+    </header>
+    <main>
+      {{{body}}}
+    </main>
+
+    <!-- Only include the logout script if the user is logged in -->
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
+</html>
+<script>"/js/main.js"</script>

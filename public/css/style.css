@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .greengradient{
+       background: linear-gradient(180deg, #E5F0D5 20.42%, rgba(217, 217, 217, 0) 131.69%);
+    }
+    .yellowgradient{
+       background: linear-gradient(180deg, #FCF0CB 20.42%, rgba(217, 217, 217, 0) 131.69%);
+    }
+    .orangegradient{
+       background: linear-gradient(180deg, #F7D7AE 20.42%, rgba(217, 217, 217, 0) 131.69%);
+    }
+    .purplegradient{
+       background: linear-gradient(180deg, #FBE7FD 20.42%, rgba(217, 217, 217, 0) 131.69%);
+    }
+    .fontborder {
+        text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+    }
+    .scroll {
+      scroll-behavior: smooth;
+    }
+    .progress-bar {
+      background-color: white;
+      width: 100%;
+    }
+    .progress-bar-inner {
+      
+      color: black;
+
+      position: fixed;
+    }
+    .post-content {
+      @apply overflow-hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Set the number of lines you want to display */
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+    }
+}
+
+/* Import Tailwind CSS */
+/* @import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities'; */

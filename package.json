@@ -1,0 +1,45 @@
+{
+  "name": "thetechpail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^6.2.2",
+    "nodemon": "^2.0.20",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.2.7"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "pg": "^8.18.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.3.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js",
+    "watch": "postcss public/css/style.css -o public/build/tailwind.css --watch",
+    "dev": "concurrently \"npm run watch\" \"npm run start\"",
+    "build:css": "postcss public/css/style.css -o public/build/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakeroth0/theTechPail.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakeroth0/theTechPail/issues"
+  },
+  "homepage": "https://github.com/jakeroth0/theTechPail#readme"
+}

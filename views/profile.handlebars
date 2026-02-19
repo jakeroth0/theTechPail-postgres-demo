@@ -1,0 +1,8 @@
+<h1>{{user.username}}</h1>
+<p>{{user.user_email}}</p>
+{{#each user.posts}}
+<h2>{{this.post_title}} - {{this.post_date}}</h2>
+<a href="/posts/edit/{{this.post.id}}">Edit</a>
+<p></p>
+<p>{{this.post.id}}</p>
+{{/each}}

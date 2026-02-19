@@ -1,0 +1,111 @@
+<div class="flex h-full flex-col" style="height: 100%;">
+  <div class="purplegradient flex-1 pb-32">
+    <h1
+      class="font-extrabold text-6xl text-[#AAA5D2] fontborder leading-none pt-8 pl-9 md:text-9xl xl:pl-[20%]"
+    >post</h1>
+    <h2
+      class="font-normal text-xl leading-none md:leading-8 pt-2 pl-9 md:text-4xl md:pt-4 xl:pl-[20%]"
+    >Leave a comment, stay awhile.</h2>
+
+    <div class="flex flex-col pl-9 pt-8 xl:pl-[20%]">
+
+      <div class="flex items-baseline md:pb-6">
+        <p
+          class="font-medium text-xl md:text-5xl md:max-w-xl"
+        >{{post.post_title}}</p>
+        <p
+          class="font-medium italic text-[#14353C] pl-2 text-sm md:text-2xl md:pl-4"
+        >{{post.user.username}}</p>
+      </div>
+      <p
+        class="font-normal text-sm text-[#1d2527] pr-9 md:text-4xl md:max-w-3xl"
+      >{{post.post_text}}</p>
+
+      <div class="flex items-baseline pb-3 pt-4">
+        <p class="font-normal text-xs text-[#2e3436] md:text-xl">{{dateFormat
+            post.post_date
+          }}</p>
+        {{#if isPostOwner}}
+          <a
+            class="font-normal text-sm text-[#61558A] pl-8 md:text-xl"
+            href="/api/posts/edit/{{post_id}}"
+          >Edit</a>
+        {{/if}}
+      </div>
+
+      {{#each post.comments}}
+        <div class="pl-9 pt-4 md:pl-20 xl:pr-32" id="comment-container">
+          <div class="flex items-baseline">
+            <p
+              class="font-medium italic text-[#14353C] text-sm md:text-lg"
+            >{{this.user.username}}</p>
+            <p
+              class="font-normal text-xs text-[#525D60] pl-2 md:text-lg"
+            >{{dateFormat this.comment_date}}</p>
+          </div>
+          <p
+            class="font-normal text-sm text-[#1d2527] md:text-3xl"
+          >{{this.comment_text}}</p>
+        </div>
+      {{/each}}
+
+      <form class="new-comment pt-4">
+        <div class="form-group pt-2" id="comment-bar">
+          <div class="pb-2">
+            <label
+              class="font-medium text-lg md:text-5xl"
+              for="comment-text"
+            >comment</label>
+          </div>
+          <textarea
+            placeholder="Leave a comment here"
+            type="text"
+            class="form-input w-10/12 md:h-16 md:w-11/12 md:placeholder:text-xl md:pl-2 xl:w-1/2"
+            id="comment-text"
+          ></textarea>
+          <input type="hidden" id="post_id" value="{{post_id}}" />
+
+          <div class="pt-4 md:pt-8">
+            <div
+              class="form-group bg-[#61558A] flex pr-1 pb-1 mr-4 w-1/3 md:h-14 md:w-1/5 md:pr-2 md:pb-2 xl:w-[180px]"
+            >
+              <button
+                class="btn btn-primary flex font-medium text-lg text-left bg-[#E7D7E7] text-black py-[.075rem] pl-3 w-full md:pl-5 md:text-4xl"
+                type="submit"
+              >submit</button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div
+    class="hidden xl:fixed xl:flex xl:flex-col z-40 top-0 right-0 w-[80px] bg-[#FFDFFF] progress-bar-inner"
+  >
+    <div
+      class="hidden xl:fixed xl:flex xl:flex-col z-20 top-0 right-0 h-[80%] w-[80px]"
+    >
+      <div class="flex items-center grow border-l-2 border-black h-[80%]">
+
+        <div class="transform -rotate-90">
+          <div class="text-xl">Progress</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div
+    class="md:bg-white hidden xl:flex justify-center items-center h-[100%] w-[80px] border-l-2 border-black fixed bottom-0 right-0 z-90"
+  ></div>
+  <div
+    class="md:bg-[#BEB6D9] hidden xl:flex justify-center items-center h-[20%] w-[80px] border-l-2 border-t-2 border-black fixed bottom-0 right-0 z-50"
+  >
+    <div class="transform -rotate-90">
+      <a href="/" class="text-xl">Home</a>
+    </div>
+  </div>
+</div>
+<script src="/js/newcomment.js"></script>

@@ -1,0 +1,49 @@
+<div class="flex h-full flex-col" style="height: 100%;">
+<div class="yellowgradient flex-1 pb-32">
+<h1 class="font-extrabold text-6xl text-[#E9CA59] fontborder leading-none pt-8 pl-9 md:text-9xl md:pt-16 xl:pl-[20%]">{{user.username}}</h1>
+<h2 class="font-normal text-xl leading-none md:leading-8 pt-2 pl-9 md:text-4xl md:pb-6 xl:pl-[20%]">{{user.user_email}}</h2>
+
+{{#each user.posts}}
+<div class="flex flex-col pt-6 pl-9 md:pl-36 xl:pl-[25%] xl:w-[70%]">
+<a href="/api/posts/{{this.id}}" class="font-medium text-xl md:text-5xl">{{this.post_title}}</a>
+
+<div class="flex xl:pt-2">
+<p class="font-normal text-xs text-[#3E4F53] pr-20 md:text-xl xl:pr-40">{{dateFormat this.post_date}}</p>
+<a class="font-normal text-xs text-[#75652C] md:text-xl" href="/api/posts/edit/{{this.id}}">Edit</a>
+</div>
+</div>
+{{/each}}
+</div>
+
+
+
+
+  <div
+    class="hidden xl:fixed xl:flex xl:flex-col z-40 top-0 right-0 w-[80px] bg-[#FAF3BA] progress-bar-inner"
+  >
+    <div
+      class="hidden xl:fixed xl:flex xl:flex-col z-20 top-0 right-0 h-[80%] w-[80px]"
+    >
+      <div class="flex items-center grow border-l-2 border-black h-[80%]">
+
+        <div class="transform -rotate-90">
+          <div class="text-xl">Progress</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div
+    class="md:bg-white hidden xl:flex justify-center items-center h-[100%] w-[80px] border-l-2 border-black fixed bottom-0 right-0 z-90"
+  ></div>
+  <div
+    class="md:bg-[#E9CA59] hidden xl:flex justify-center items-center h-[20%] w-[80px] border-l-2 border-t-2 border-black fixed bottom-0 right-0 z-50"
+  >
+    <div class="transform -rotate-90">
+      <a href="/" class="text-xl">Home</a>
+    </div>
+  </div>
+
+
+</div>
+<script src="/js/ownprofile.js"></script>
