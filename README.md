@@ -63,6 +63,7 @@ Set env vars in Render:
 Quickest path: deploy from `render.yaml` using Render Blueprint.
 
 See `/docs/render-deploy-checklist.md` for the exact click path and verification steps.
+For long-term portfolio uptime, use a paid Render Postgres plan instead of free.
 
 See `/docs/fork-to-render-playbook.md` for the full fork-equivalent and deployment workflow.
 

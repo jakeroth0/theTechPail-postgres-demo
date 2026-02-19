@@ -12,6 +12,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const isProduction = process.env.NODE_ENV === 'production';
 
+if (isProduction && !process.env.SESSION_SECRET) {
+  throw new Error('SESSION_SECRET is required in production.');
+}
+
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({
   helpers: {
@@ -37,6 +41,10 @@ const sess = {
 if (isProduction) {
   app.set('trust proxy', 1);
 }
+
+app.get('/healthz', (_req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
 
 app.use(session(sess));
 
