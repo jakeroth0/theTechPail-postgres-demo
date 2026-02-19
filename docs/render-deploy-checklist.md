@@ -17,7 +17,7 @@ The web service uses:
 
 - Build command: `npm ci && npm run build:css`
 - Start command: `npm start`
-- Health check path: `/`
+- Health check path: `/healthz`
 
 Environment variables are provisioned automatically:
 
@@ -50,3 +50,8 @@ In your portfolio entry, note:
 1. Original app was built for Heroku + MySQL.
 2. Demo deployment uses Render + Postgres to keep hosting cost low.
 3. Core app architecture and UX were preserved.
+
+## 6. Free Plan Caveat
+
+If you keep the database on the Render free plan, Render may expire it after inactivity/age limits.
+For a persistent portfolio demo URL, switch the database plan to a paid tier in Render.
