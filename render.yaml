@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: thetechpail-web
+    runtime: node
+    plan: free
+    branch: main
+    region: oregon
+    buildCommand: npm ci && npm run build:css
+    startCommand: npm start
+    autoDeployTrigger: commit
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: thetechpail-db
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+
+databases:
+  - name: thetechpail-db
+    region: oregon
+    plan: free
+    ipAllowList: []
